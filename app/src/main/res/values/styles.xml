@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="cardViewStyle">@style/CardView.Light.AfternoonTea</item>
+    </style>
+
+    <!-- custom style -->
+    <style name="CustomCardView" parent="CardView">
+
+    </style>
+
+    <style name="CardView.Light.AfternoonTea" parent="CustomCardView">
+        <item name="cardBackgroundColor">@color/saraba_main_bg_color</item>
+    </style>
+
+    <style name="QuoteText">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#888888</item>
+    </style>
+
+    <style name="MainText">
+        <item name="android:textSize">17sp</item>
+    </style>
+
+</resources>

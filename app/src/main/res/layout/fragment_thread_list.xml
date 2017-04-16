@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.sora.zero.tgfc.utils.ScrollChildSwipeRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+             <LinearLayout
+                 android:id="@+id/listContainer"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+             <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvThreadList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/showError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/errorIcon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_block_black_24dp"/>
+
+                <TextView
+                    android:id="@+id/errorMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/error_no_access_right"
+                    android:layout_marginBottom="8dp"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </com.sora.zero.tgfc.utils.ScrollChildSwipeRefreshLayout>
+
+
+
+</layout>

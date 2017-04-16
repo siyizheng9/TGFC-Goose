@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- forked from ykrank -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="ThreadPost"
+            type="com.sora.zero.tgfc.data.api.model.ThreadContentItem"/>
+
+        <variable
+            name="EventBus"
+            type="com.sora.zero.tgfc.widget.EventBus"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        style="?attr/cardViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0.05dp"
+        android:layout_marginTop="0.05dp"
+        app:cardCornerRadius="0dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <com.sora.zero.tgfc.widget.BezelImageView
+                android:id="@+id/avatar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:contentDescription="@string/avatar_content_desc"
+                app:maskDrawable="@drawable/rounded_mask"
+                android:src="@drawable/avatar_goose"
+                app:uid="@{ThreadPost.posterUID}"/>
+
+            <TextView
+                android:id="@+id/author_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/avatar"
+                android:layout_toRightOf="@id/avatar"
+                android:lines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:includeFontPadding="false"
+                android:text="@{ThreadPost.posterName}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/author_name"
+                android:layout_alignStart="@id/author_name"
+                android:layout_below="@id/author_name"
+                android:layout_marginTop="4.5dp"
+                android:includeFontPadding="false"
+                android:lines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:relativeTime="@{ThreadPost.postTime}"/>
+
+            <!-- enable `textIsSelectable` in order to add click effect -->
+            <!-- see https://code.google.com/p/android/issues/detail?id=13895 -->
+            <TextView
+                android:id="@+id/tv_floor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@color/floor_num"
+                app:eventBus="@{EventBus}"
+                app:post="@{ThreadPost}"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="56dp">
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="3dp"
+                    android:layout_height="wrap_content"
+                    android:background="#BDBDBD"
+                    android:layout_alignTop="@+id/quoted_text"
+                    android:layout_alignBottom="@+id/quoted_text"/>
+
+                <TextView
+                    android:id="@+id/quoted_text"
+                    android:layout_toRightOf="@id/divider"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.2"
+                    app:quotedText="@{ThreadPost}"
+                    style="@style/QuoteText"/>
+
+                <TextView
+                    android:id="@+id/tv_reply"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/quoted_text"
+                    android:lineSpacingMultiplier="1.2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:autoLink="web"
+                    style="@style/MainText"
+                    app:reply="@{ThreadPost}"/>
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>
+

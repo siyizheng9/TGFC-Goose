@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">TGFC</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="setting">Settings</string>
+    <string name="loading_threads_error">Error while loading threads</string>
+    <string name="loading_posts">Error while loading posts</string>
+    <string name="avatar_content_desc">Avatar</string>
+    <string name="action_new_thread">New thread</string>
+    <string name="action_reply">Reply</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_login">Log in</string>
+    <string name="action_logout">Log out</string>
+    <string name="action_open_in_browser">Open in browser</string>
+    <string name="action_goto_page">Go to page</string>
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Cancel</string>
+
+    <string name="error_no_access_right">No access right</string>
+
+    <string name="drawer_avatar_content_desc">User avatar</string>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login_failed">Login Failed</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+</resources>

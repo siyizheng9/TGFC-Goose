@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- According to the material design guidelines, list titles can only contain up to three lines of text. -->
+    <integer name="list_max_line">3</integer>
+</resources>
