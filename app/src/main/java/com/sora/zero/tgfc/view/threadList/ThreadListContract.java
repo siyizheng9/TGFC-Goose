@@ -30,6 +30,8 @@ public interface ThreadListContract {
 
         boolean isActive();
 
+        boolean isThreadListEmpty();
+
     }
 
     interface Presenter extends BasePresenter {

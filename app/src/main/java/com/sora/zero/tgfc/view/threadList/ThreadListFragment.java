@@ -81,8 +81,6 @@ public class ThreadListFragment extends BaseFragment implements ThreadListContra
             this.fragmentTitle = savedInstanceState.getString(ARG_FRAGMENT_TITLE);
         }
 
-
-
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_thread_list, parent, false);
 
         return mBinding.getRoot();
@@ -242,6 +240,11 @@ public class ThreadListFragment extends BaseFragment implements ThreadListContra
         String newTitle = ForumList.getForumByFid(forumId).name;
         this.fragmentTitle = newTitle;
         setActionBarTitle(newTitle);
+    }
+
+    @Override
+    public boolean isThreadListEmpty() {
+        return mThreadsRecyclerAdapter.isThreadListEmpty();
     }
 
 

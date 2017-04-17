@@ -48,7 +48,8 @@ public class ThreadListPresenter implements ThreadListContract.Presenter {
 
     @Override
     public void subscribe(){
-        loadThreads();
+        if(mThreadListView.isThreadListEmpty())
+            loadThreads();
     }
 
     @Override

@@ -143,4 +143,8 @@ RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public Observable<ForumThread> getPositionClicks() {
         return onClickSubject;
     }
+
+    public boolean isThreadListEmpty() {
+        return mThreads.isEmpty();
+    }
 }
