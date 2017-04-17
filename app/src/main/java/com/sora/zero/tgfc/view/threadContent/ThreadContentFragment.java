@@ -77,6 +77,7 @@ public class ThreadContentFragment extends BaseFragment{
             this.fragmentTitle = savedInstanceState.getString(ARG_TITLE);
             this.mTotalPage = savedInstanceState.getInt(TOTAL_PAGE);
             this.mCurrentPage = savedInstanceState.getInt(CURRENT_PAGE);
+            showGotoPageDialog();
         }
 
         mEventBus = App.getAppComponent().getEventBus();
@@ -211,9 +212,15 @@ public class ThreadContentFragment extends BaseFragment{
 
     private void showGotoPageDialog() {
         FragmentManager fm = getChildFragmentManager();
-        GotoPageDialogFragment dialog = GotoPageDialogFragment.newInstance(mTotalPage, mCurrentPage);
-        dialog.show(fm, GotoPageDialogFragment.class.toString());
-        dialog.getPageSelect().subscribe(
+        GotoPageDialogFragment dialogFragment = (GotoPageDialogFragment) fm.
+                findFragmentByTag(GotoPageDialogFragment.class.toString());
+
+        if(dialogFragment == null){
+            dialogFragment = GotoPageDialogFragment.newInstance(mTotalPage, mCurrentPage);
+            dialogFragment.show(fm, GotoPageDialogFragment.class.toString());
+        }
+
+        dialogFragment.getPageSelect().subscribe(
                 //onNext
                 page -> {
                     if (page != mCurrentPage && page > 0) {
