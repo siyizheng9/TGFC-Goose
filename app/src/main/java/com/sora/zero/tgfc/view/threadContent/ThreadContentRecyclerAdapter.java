@@ -75,6 +75,10 @@ public class ThreadContentRecyclerAdapter extends
         return mThreadContentItems.size();
     }
 
+    public boolean isThreadPostListEmpty(){
+        return this.mThreadContentItems.isEmpty();
+    }
+
 
 
 

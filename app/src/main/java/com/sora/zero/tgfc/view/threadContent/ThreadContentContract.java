@@ -27,7 +27,7 @@ public interface ThreadContentContract {
 
         boolean isActive();
 
-
+        boolean isThreadPostListEmpty();
 
     }
 

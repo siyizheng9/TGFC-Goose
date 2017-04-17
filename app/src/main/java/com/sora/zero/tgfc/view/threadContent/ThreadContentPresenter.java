@@ -92,7 +92,8 @@ public class ThreadContentPresenter implements ThreadContentContract.Presenter {
 
     @Override
     public void subscribe(int page){
-        loadPosts(page);
+        if(mPageMap.get(page).isThreadPostListEmpty())
+            loadPosts(page);
     }
 
     @Override

@@ -160,6 +160,12 @@ public class ThreadContentPageFragment extends BaseFragment implements ThreadCon
         return isAdded();
     }
 
+    @Override
+    public boolean isThreadPostListEmpty(){
+
+        return this.mRecyclerAdapter.isThreadPostListEmpty();
+    }
+
 
 
 
