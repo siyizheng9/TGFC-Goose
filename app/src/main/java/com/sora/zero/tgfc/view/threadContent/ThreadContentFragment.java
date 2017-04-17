@@ -212,6 +212,7 @@ public class ThreadContentFragment extends BaseFragment{
 
     private void showGotoPageDialog() {
         FragmentManager fm = getChildFragmentManager();
+
         GotoPageDialogFragment dialogFragment = (GotoPageDialogFragment) fm
                 .findFragmentByTag(GotoPageDialogFragment.class.toString());
 
