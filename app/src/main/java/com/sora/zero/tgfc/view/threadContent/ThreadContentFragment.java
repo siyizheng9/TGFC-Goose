@@ -77,7 +77,7 @@ public class ThreadContentFragment extends BaseFragment{
             this.fragmentTitle = savedInstanceState.getString(ARG_TITLE);
             this.mTotalPage = savedInstanceState.getInt(TOTAL_PAGE);
             this.mCurrentPage = savedInstanceState.getInt(CURRENT_PAGE);
-            showGotoPageDialog();
+            showGotoPageDialog(true);
         }
 
         mEventBus = App.getAppComponent().getEventBus();
@@ -211,6 +211,10 @@ public class ThreadContentFragment extends BaseFragment{
     }
 
     private void showGotoPageDialog() {
+        showGotoPageDialog(false);
+    }
+
+    private void showGotoPageDialog(boolean isReconnect) {
         FragmentManager fm = getChildFragmentManager();
 
         GotoPageDialogFragment dialogFragment = (GotoPageDialogFragment) fm
@@ -218,7 +222,8 @@ public class ThreadContentFragment extends BaseFragment{
 
         if(dialogFragment == null){
             dialogFragment = GotoPageDialogFragment.newInstance(mTotalPage, mCurrentPage);
-            dialogFragment.show(fm, GotoPageDialogFragment.class.toString());
+            if(isReconnect == false)
+                dialogFragment.show(fm, GotoPageDialogFragment.class.toString());
         }
 
         dialogFragment.getPageSelect().subscribe(
@@ -230,6 +235,7 @@ public class ThreadContentFragment extends BaseFragment{
                 });
 
     }
+
 
     private void updateTitle() {
         String newTitle = "(" + mCurrentPage + "/" + mTotalPage + ")" + fragmentTitle;
