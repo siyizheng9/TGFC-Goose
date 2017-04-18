@@ -54,6 +54,8 @@ public class ThreadListFragment extends BaseFragment implements ThreadListContra
 
     private FragmentThreadListBinding mBinding;
 
+    private MenuItem mRefreshOption;
+
 
     @Override
     public void onAttach(Context context) {
@@ -156,6 +158,7 @@ public class ThreadListFragment extends BaseFragment implements ThreadListContra
         menu.clear();
 
         inflater.inflate(R.menu.thread_list, menu);
+        mRefreshOption = menu.findItem(R.id.action_refresh);
 
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -202,6 +205,8 @@ public class ThreadListFragment extends BaseFragment implements ThreadListContra
     @Override
     public void setLoadingIndicator(boolean active){
         mSwipeRefreshLayout.setRefreshing(active);
+        if (mRefreshOption != null)
+            mRefreshOption.setEnabled(!active);
     }
 
     @Override
