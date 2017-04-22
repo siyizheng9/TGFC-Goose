@@ -5,4 +5,7 @@
     <dimen name="drawer_avatar_size">64dp</dimen>
     <dimen name="drawer_avatar_margin_top">@dimen/item_padding</dimen>
     <dimen name="list_view_padding">8dp</dimen>
+
+    <dimen name="minimum_touch_target_size">48dp</dimen>
+    <dimen name="emoticon_padding">8dp</dimen>
 </resources>

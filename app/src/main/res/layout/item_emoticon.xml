@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.net.Uri"/>
+
+        <variable
+            name="emoticonViewModel"
+            type="com.sora.zero.tgfc.viewmodel.EmoticonViewModel"/>
+
+        <variable
+            name="eventBus"
+            type="com.sora.zero.tgfc.widget.EventBus"/>
+
+        <variable
+            name="drawableRequestBuilder"
+            type="com.bumptech.glide.DrawableRequestBuilder"/>
+    </data>
+
+    <ImageView
+        android:id="@+id/image"
+        style="?attr/android:borderlessButtonStyle"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:contentDescription="@null"
+        android:padding="8dp"
+        app:emoticonDrawableRequestBuilder="@{drawableRequestBuilder}"
+        app:emoticonImagePath="@{emoticonViewModel.emoticon.imagePath}"
+        app:onClickListener="@{emoticonViewModel.clickEmotion(eventBus)}"/>
+
+</layout>
