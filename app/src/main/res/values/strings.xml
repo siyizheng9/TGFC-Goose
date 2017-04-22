@@ -25,4 +25,7 @@
     <string name="login_failed">Login Failed</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
+
+    <!-- emoticon -->
+    <string name="emoticon_default" translatable="false">默认</string>
 </resources>
