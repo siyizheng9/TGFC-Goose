@@ -58,6 +58,8 @@ public class NewThreadFragment extends BasePostFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        this.fragmentTitle = getString(R.string.action_new_thread);
+
         FragmentNewThreadBinding newThreadBinding =
                 DataBindingUtil.inflate(inflater, R.layout.fragment_new_thread, container, false);
         initCreateView(newThreadBinding.layoutPost);

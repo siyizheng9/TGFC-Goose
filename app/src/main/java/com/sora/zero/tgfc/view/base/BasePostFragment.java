@@ -29,6 +29,7 @@ import com.sora.zero.tgfc.App;
 import com.sora.zero.tgfc.R;
 import com.sora.zero.tgfc.databinding.FragmentPostBinding;
 import com.sora.zero.tgfc.utils.ImeUtils;
+import com.sora.zero.tgfc.view.MainActivity;
 import com.sora.zero.tgfc.view.common.EmoticonPagerAdapter;
 import com.sora.zero.tgfc.widget.EventBus;
 
@@ -133,6 +134,7 @@ public abstract class BasePostFragment extends BaseFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
         inflater.inflate(R.menu.fragment_reply, menu);
 
         mMenuEmoticon = menu.findItem(R.id.action_emoticon);
@@ -142,6 +144,29 @@ public abstract class BasePostFragment extends BaseFragment {
 
         mMenuSend = menu.findItem(R.id.action_send)
                 .setEnabled(!TextUtils.isEmpty(mReplyView.getText()));
+
+        ((MainActivity) getActivity()).setDrawerToggleIndicator(false);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                getActivity().onBackPressed();
+                return true;
+            case R.id.action_emoticon:
+                if (mIsEmoticonKeyboardShowing) {
+                    hideEmoticonKeyboard(true);
+                } else {
+                    showEmoticonKeyboard();
+                }
+
+                return true;
+            case R.id.action_send:
+                //todo onMenuSendClick();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void setupEmoticonKeyboard() {
