@@ -46,7 +46,7 @@ public abstract class BaseFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        L.d(LOG_TAG + "onActivityCreated");
+        L.d(LOG_TAG + " onActivityCreated");
 
     }
 
@@ -54,7 +54,7 @@ public abstract class BaseFragment extends Fragment {
     public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
 
-        L.d(LOG_TAG + "onViewStateRestored");
+        L.d(LOG_TAG + " onViewStateRestored");
     }
 
     @Override

@@ -3,7 +3,9 @@ package com.sora.zero.tgfc.data.api.model.wrapper;
 import android.support.annotation.Nullable;
 
 import com.sora.zero.tgfc.data.api.model.ThreadType;
+import com.sora.zero.tgfc.utils.L;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -25,6 +27,8 @@ public class ThreadTypeWrapper extends BaseWrapper {
     @Nullable
     public static ThreadTypeWrapper fromSource(String source) {
 
+        source = StringEscapeUtils.unescapeHtml4(source);
+
         if(source == null) {
             return null;
         }
@@ -32,7 +36,7 @@ public class ThreadTypeWrapper extends BaseWrapper {
         ThreadTypeWrapper wrapper = new ThreadTypeWrapper();
         List<ThreadType> mTypes = new ArrayList<>();
 
-        Pattern pattern = Pattern.compile(".*this.form.submit\\(\\);}\">(.*)<\\/se");
+        Pattern pattern = Pattern.compile("submit\\(\\);\\}.>(.*)<\\/se");
         Matcher matcher = pattern.matcher(source);
 
         if(matcher.find()) {
@@ -42,6 +46,7 @@ public class ThreadTypeWrapper extends BaseWrapper {
             for (Element option : options) {
                 ThreadType threadType = new ThreadType(option.attr("value"), option.html());
                 mTypes.add(threadType);
+                //L.d("ThreadTypeWrapper", threadType.toString());
             }
 
             wrapper.setThreadTypes(mTypes);

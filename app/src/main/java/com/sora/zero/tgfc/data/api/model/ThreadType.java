@@ -49,4 +49,13 @@ public final class ThreadType {
     public int hashCode() {
         return Objects.hashCode(this.typeName, this.typeId);
     }
+
+
+    @Override
+    public String toString() {
+        return "ThreadType{" +
+                "typeId='" + typeId + '\'' + "; typeName='" + typeName + '\'' +
+                '}';
+    }
+
 }

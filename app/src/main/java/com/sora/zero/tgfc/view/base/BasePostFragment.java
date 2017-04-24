@@ -146,6 +146,7 @@ public abstract class BasePostFragment extends BaseFragment {
                 .setEnabled(!TextUtils.isEmpty(mReplyView.getText()));
 
         ((MainActivity) getActivity()).setDrawerToggleIndicator(false);
+
     }
 
     @Override

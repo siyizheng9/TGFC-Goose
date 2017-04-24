@@ -56,6 +56,7 @@ public class ThreadListFragment extends BaseFragment implements ThreadListContra
     private FragmentThreadListBinding mBinding;
 
     private MenuItem mRefreshOption;
+    private MenuItem mNewThreadOption;
 
     private boolean isLoading;
 
@@ -163,6 +164,9 @@ public class ThreadListFragment extends BaseFragment implements ThreadListContra
         inflater.inflate(R.menu.thread_list, menu);
         mRefreshOption = menu.findItem(R.id.action_refresh);
         mRefreshOption.setEnabled(!isLoading);
+
+        mNewThreadOption = menu.findItem(R.id.action_new_thread);
+        mNewThreadOption.setEnabled(App.getAppComponent().getUser().isLogged());
 
         super.onCreateOptionsMenu(menu, inflater);
     }

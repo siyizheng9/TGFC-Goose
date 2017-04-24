@@ -118,13 +118,13 @@ public class NewThreadFragment extends BasePostFragment {
     }
 
     private void setSpinner(@NonNull List<ThreadType> types) {
+        L.d("setSpinner types", Arrays.toString(types.toArray()));
         if (types.isEmpty()){
             typeSpinner.setVisibility(View.GONE);
             return;
         } else {
             typeSpinner.setVisibility(View.VISIBLE);
         }
-        L.d(LOG_TAG, Arrays.toString(types.toArray()));
         ThreadTypeSpinnerAdapter adapter = new ThreadTypeSpinnerAdapter(this.getContext(), types);
         typeSpinner.setAdapter(adapter);
         if (mCacheModel != null && types.size() > mCacheModel.getSelectPosition()) {
