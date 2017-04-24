@@ -40,6 +40,23 @@ public abstract class BaseFragment extends Fragment {
 
     }
 
+    // onCreateView
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        L.d(LOG_TAG + "onActivityCreated");
+
+    }
+
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+
+        L.d(LOG_TAG + "onViewStateRestored");
+    }
+
     @Override
     public void onStart() {
         super.onStart();

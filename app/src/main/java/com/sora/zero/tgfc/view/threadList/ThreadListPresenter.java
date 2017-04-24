@@ -140,4 +140,10 @@ public class ThreadListPresenter implements ThreadListContract.Presenter {
     public void setTitle() {
         mThreadListView.showTitle(mForumId);
     }
+
+    @Override
+    public int getForumId() {
+        return mForumId;
+
+    }
 }

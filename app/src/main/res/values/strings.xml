@@ -15,8 +15,13 @@
     <string name="action_goto_page">Go to page</string>
     <string name="action_ok">OK</string>
     <string name="action_cancel">Cancel</string>
+    <string name="action_keyboard">Keyboard</string>
+    <string name="action_emoticon_keyboard">Emoticon</string>
+    <string name="action_send">Send</string>
 
+    <!-- error message -->
     <string name="error_no_access_right">No access right</string>
+    <string name="message_network_error">Network error</string>
 
     <string name="drawer_avatar_content_desc">User avatar</string>
 
@@ -25,6 +30,9 @@
     <string name="login_failed">Login Failed</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
+
+    <string name="prompt_reply">Write something</string>
+    <string name="prompt_title">Write title here</string>
 
     <!-- emoticon -->
     <string name="emoticon_default" translatable="false">默认</string>

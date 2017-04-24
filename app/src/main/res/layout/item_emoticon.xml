@@ -16,7 +16,7 @@
 
         <variable
             name="drawableRequestBuilder"
-            type="com.bumptech.glide.DrawableRequestBuilder"/>
+            type="com.bumptech.glide.DrawableRequestBuilder&lt;Uri>"/>
     </data>
 
     <ImageView

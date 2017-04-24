@@ -72,4 +72,12 @@ public class L {
         }
     }
 
+    public static void report(Throwable tr) {
+        report(tr, Log.WARN);
+    }
+
+    public static void report(Throwable tr, int severity) {
+
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.sora.zero.tgfc.viewmodel;
 
-import android.databinding.Observable;
 import android.databinding.ObservableField;
 import android.view.View;
 

@@ -28,6 +28,7 @@ import com.sora.zero.tgfc.utils.L;
 import com.sora.zero.tgfc.utils.ScrollChildSwipeRefreshLayout;
 import com.sora.zero.tgfc.view.MainActivity;
 import com.sora.zero.tgfc.view.base.BaseFragment;
+import com.sora.zero.tgfc.view.newThread.NewThreadFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -173,7 +174,10 @@ public class ThreadListFragment extends BaseFragment implements ThreadListContra
            case R.id.action_refresh:
                mPresenter.refresh();
                break;
-
+            case R.id.action_new_thread:
+                FragmentUtils.showFragment(getFragmentManager(),
+                        NewThreadFragment.newInstance(mPresenter.getForumId()));
+                break;
         }
 
         return super.onOptionsItemSelected(item);

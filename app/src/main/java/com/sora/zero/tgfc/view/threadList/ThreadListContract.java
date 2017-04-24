@@ -46,5 +46,7 @@ public interface ThreadListContract {
 
         void refresh();
 
+        int getForumId();
+
     }
 }

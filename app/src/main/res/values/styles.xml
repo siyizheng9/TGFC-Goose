@@ -27,4 +27,10 @@
         <item name="android:textSize">17sp</item>
     </style>
 
+    <style name="Widget.Design.TabLayout.Keyboard" parent="Widget.Design.TabLayout">
+        <item name="tabMode">scrollable</item>
+        <item name="tabIndicatorColor">@null</item>
+        <item name="tabIndicatorHeight">0dp</item>
+    </style>
+
 </resources>

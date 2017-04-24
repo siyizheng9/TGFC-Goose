@@ -6,6 +6,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import retrofit2.http.Url;
 
 /**
  * Created by zsy on 3/18/17.
@@ -31,6 +32,9 @@ public interface TGFCService {
 
     @GET("index.php?action=my")
     Observable<String> getAccountInfo();
+
+    @GET
+    Observable<String> getThreadTypes(@Url String url);
 
     @FormUrlEncoded
     @POST(APIURL.WAP_LOGIN_URL)

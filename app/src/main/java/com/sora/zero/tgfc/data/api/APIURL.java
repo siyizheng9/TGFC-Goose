@@ -24,6 +24,8 @@ public class APIURL {
 
     public static final String WEB_CUSTOM_AVATARS = "http://club." + DOMAIN_NAME + "/customavatars/";
 
+    public static final String WEB_FORUM = "http://club.tgfcer.com/forumdisplay.php?fid=";
+
     public static final String ANDROID_CLIENT_SIGNATURE_REGEX = "<br(?:\\s*?\\/)?>\\s*_{8,}\\s*<br(?:\\s*?\\/)?>\\s*(发送自.+?客户端)";
 
     public static String getAvatarUrl(int uid) {
