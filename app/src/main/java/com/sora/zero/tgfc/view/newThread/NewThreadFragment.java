@@ -1,5 +1,6 @@
 package com.sora.zero.tgfc.view.newThread;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -34,8 +35,6 @@ import io.reactivex.disposables.Disposable;
 
 public class NewThreadFragment extends BasePostFragment {
 
-    private static final String LOG_TAG = "NewThreadFragment";
-
     private static final String ARG_FORUM_ID = "forum_id";
 
     private TGFCService mTGFCService;
@@ -55,6 +54,13 @@ public class NewThreadFragment extends BasePostFragment {
         fragment.setArguments(bundle);
         return fragment;
     }
+
+    @Override
+    public void onAttach(Context context) {
+        this.LOG_TAG = "NewThreadFragment";
+        super.onAttach(context);
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
