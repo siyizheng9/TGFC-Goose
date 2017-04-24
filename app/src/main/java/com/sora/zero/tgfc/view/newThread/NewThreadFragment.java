@@ -80,6 +80,13 @@ public class NewThreadFragment extends BasePostFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle(fragmentTitle);
+    }
+
+
+    @Override
     public void onDestroy() {
 
         if (mDisposable != null)
