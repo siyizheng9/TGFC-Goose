@@ -22,17 +22,19 @@ import com.sora.zero.tgfc.App;
 import com.sora.zero.tgfc.R;
 import com.sora.zero.tgfc.data.api.model.ForumList;
 import com.sora.zero.tgfc.data.api.model.ForumThread;
+import com.sora.zero.tgfc.data.api.model.User;
+import com.sora.zero.tgfc.data.event.UserLogEvent;
 import com.sora.zero.tgfc.databinding.FragmentThreadListBinding;
 import com.sora.zero.tgfc.utils.FragmentUtils;
 import com.sora.zero.tgfc.utils.L;
 import com.sora.zero.tgfc.utils.ScrollChildSwipeRefreshLayout;
-import com.sora.zero.tgfc.view.MainActivity;
 import com.sora.zero.tgfc.view.base.BaseFragment;
 import com.sora.zero.tgfc.view.newThread.NewThreadFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.disposables.Disposable;
 
 
 /**
@@ -59,6 +61,8 @@ public class ThreadListFragment extends BaseFragment implements ThreadListContra
     private MenuItem mNewThreadOption;
 
     private boolean isLoading;
+
+    private Disposable loginEventDisposable;
 
 
     @Override
@@ -134,6 +138,14 @@ public class ThreadListFragment extends BaseFragment implements ThreadListContra
         mPresenter.subscribe();
         mPresenter.setTitle();
 
+        loginEventDisposable = App.getAppComponent().getEventBus().get()
+                .ofType(UserLogEvent.class)
+                .subscribe(UserLogEvent -> {
+                    //onNext
+                    if (mNewThreadOption != null && UserLogEvent.isLogged())
+                        mNewThreadOption.setEnabled(true);
+                });
+
     }
 
 
@@ -146,6 +158,7 @@ public class ThreadListFragment extends BaseFragment implements ThreadListContra
     public void onPause() {
         super.onPause();
         mPresenter.unsubscribe();
+        loginEventDisposable.dispose();
     }
 
     @Override

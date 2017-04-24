@@ -111,6 +111,7 @@ public class NewThreadFragment extends BasePostFragment {
                         setSpinner(threadTypeWrapper.getThreadTypes());
                     } else {
                         showMessage(getString(R.string.message_network_error));
+                        typeSpinner.setVisibility(View.GONE);
                     }
                 }, e -> {
                     L.e(LOG_TAG, e.toString());

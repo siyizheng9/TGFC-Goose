@@ -3,6 +3,8 @@ package com.sora.zero.tgfc.data.api.model;
 import android.databinding.BaseObservable;
 
 import com.sora.zero.tgfc.App;
+import com.sora.zero.tgfc.data.event.UserLogEvent;
+import com.sora.zero.tgfc.widget.EventBus;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -21,6 +23,12 @@ public class User extends BaseObservable {
 
     private String avatarUrl;
 
+    private EventBus mEventBus;
+
+    public User(EventBus eventBus) {
+        this.mEventBus = eventBus;
+    }
+
     public void init() {
         App.getAppComponent().getTGFCService()
                 .getAccountInfo()
@@ -35,8 +43,7 @@ public class User extends BaseObservable {
                                 uid = userInfo.getUid();
                                 name = userInfo.getUserName();
                                 avatarUrl = userInfo.getAvatarUrl();
-                                logged = true;
-                                notifyChange();
+                                setLogged(true);
                             } else {
                                 logged = false;
                             }
@@ -76,6 +83,7 @@ public class User extends BaseObservable {
 
     public void setLogged(boolean logged) {
         this.logged = logged;
+        mEventBus.post(new UserLogEvent(logged));
         notifyChange();
     }
 

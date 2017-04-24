@@ -81,14 +81,14 @@ public class AppModule {
 
     @Provides
     @Singleton
-    User provideUser() {
-        return new User();
+    EventBus provideEventBus() {
+        return new EventBus();
     }
 
     @Provides
     @Singleton
-    EventBus provideEventBus() {
-        return new EventBus();
+    User provideUser(EventBus eventBus) {
+        return new User(eventBus);
     }
 
 }
