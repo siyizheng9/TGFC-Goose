@@ -7,6 +7,7 @@ import com.sora.zero.tgfc.data.api.APIURL;
 import com.sora.zero.tgfc.data.api.TGFCService;
 import com.sora.zero.tgfc.data.api.model.User;
 import com.sora.zero.tgfc.widget.EventBus;
+import com.sora.zero.tgfc.widget.Okhttp.RewriteCharsetInterceptor;
 import com.sora.zero.tgfc.widget.PersistentHttpCookieStore;
 
 import java.net.CookieManager;
@@ -57,6 +58,7 @@ public class AppModule {
         builder.readTimeout(77, TimeUnit.SECONDS);
         builder.retryOnConnectionFailure(true);
         builder.cookieJar(new JavaNetCookieJar(cookieManager));
+        builder.addNetworkInterceptor(new RewriteCharsetInterceptor());
 
         if(BuildConfig.DEBUG){
             builder.addNetworkInterceptor(new StethoInterceptor());
