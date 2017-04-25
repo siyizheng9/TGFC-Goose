@@ -22,6 +22,7 @@ import com.sora.zero.tgfc.R;
 import com.sora.zero.tgfc.data.api.model.Forum;
 import com.sora.zero.tgfc.data.api.model.ForumList;
 import com.sora.zero.tgfc.data.api.model.User;
+import com.sora.zero.tgfc.data.event.UserLogEvent;
 import com.sora.zero.tgfc.databinding.ActivityMainBinding;
 import com.sora.zero.tgfc.databinding.NavHeaderBinding;
 import com.sora.zero.tgfc.utils.FragmentUtils;
@@ -35,6 +36,10 @@ import com.sora.zero.tgfc.view.threadList.ThreadListFragment;
 import com.sora.zero.tgfc.view.threadList.ThreadListPresenter;
 import com.sora.zero.tgfc.view.threadList.ThreadListPresenterModule;
 
+import java.net.CookieManager;
+import java.net.CookieStore;
+import java.net.HttpCookie;
+import java.net.URI;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -129,7 +134,7 @@ public class MainActivity extends BaseActivity {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
-       mDrawerToggle.syncState();
+        mDrawerToggle.syncState();
     }
 
     @Override
@@ -239,7 +244,7 @@ public class MainActivity extends BaseActivity {
                                             .getCookieStore().removeAll();
                                     mUser.setLogged(false);
                                     showMessage("成功退出登陆");
-
+                                    App.getAppComponent().getEventBus().post(new UserLogEvent(false));
                                 } )
                         .setNegativeButton(getString(R.string.cancel),
                                 (d, which) -> {}).create();

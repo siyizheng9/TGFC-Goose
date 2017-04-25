@@ -119,7 +119,7 @@ public class NewThreadFragment extends BasePostFragment {
     }
 
     private void setSpinner(@NonNull List<ThreadType> types) {
-        L.d("setSpinner types", Arrays.toString(types.toArray()));
+        L.d("setSpinner types: " + Arrays.toString(types.toArray()));
         if (types.isEmpty()){
             typeSpinner.setVisibility(View.GONE);
             return;

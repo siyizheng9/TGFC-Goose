@@ -142,8 +142,13 @@ public class ThreadListFragment extends BaseFragment implements ThreadListContra
                 .ofType(UserLogEvent.class)
                 .subscribe(UserLogEvent -> {
                     //onNext
-                    if (mNewThreadOption != null && UserLogEvent.isLogged())
-                        mNewThreadOption.setEnabled(true);
+                    if(mNewThreadOption != null) {
+                        if (UserLogEvent.isLogged())
+                            mNewThreadOption.setEnabled(true);
+                        else
+                            mNewThreadOption.setEnabled(false);
+
+                    }
                 });
 
     }

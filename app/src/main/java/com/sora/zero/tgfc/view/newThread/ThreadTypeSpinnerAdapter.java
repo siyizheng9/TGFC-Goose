@@ -19,7 +19,7 @@ import java.util.List;
 public class ThreadTypeSpinnerAdapter extends ArrayAdapter<ThreadType> {
 
     public ThreadTypeSpinnerAdapter(Context context, List<ThreadType> types) {
-        super(context, 0, types);
+        super(context, R.layout.spinner_thread_type, types);
     }
 
     @Override
@@ -33,6 +33,13 @@ public class ThreadTypeSpinnerAdapter extends ArrayAdapter<ThreadType> {
 
         return converterView;
     }
+
+
+    @Override
+    public View getDropDownView(int position, View convertView, ViewGroup parent) {
+        return getView(position, convertView, parent);
+    }
+
 
     @Override
     public long getItemId(int position) {

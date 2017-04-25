@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import com.sora.zero.tgfc.data.api.model.ThreadType;
 import com.sora.zero.tgfc.utils.L;
 
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -26,8 +25,6 @@ public class ThreadTypeWrapper extends BaseWrapper {
 
     @Nullable
     public static ThreadTypeWrapper fromSource(String source) {
-
-        source = StringEscapeUtils.unescapeHtml4(source);
 
         if(source == null) {
             return null;

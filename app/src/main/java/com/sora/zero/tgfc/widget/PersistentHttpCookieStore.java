@@ -93,6 +93,7 @@ public final class PersistentHttpCookieStore implements CookieStore {
         } else {
             cookies.remove(httpCookie);
         }
+        httpCookie.setSecure(false);
         cookies.add(httpCookie);
 
         String uriString = uri.toString();
