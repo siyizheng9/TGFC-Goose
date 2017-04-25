@@ -42,6 +42,8 @@ public class ThreadTypeWrapper extends BaseWrapper {
             Elements options = doc.select("option");
             for (Element option : options) {
                 ThreadType threadType = new ThreadType(option.attr("value"), option.html());
+                if(option.html().contains("&nbsp;"))
+                    threadType.setTypeName(" ");
                 mTypes.add(threadType);
                 //L.d("ThreadTypeWrapper", threadType.toString());
             }
