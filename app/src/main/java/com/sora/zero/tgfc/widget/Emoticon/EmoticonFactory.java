@@ -1,4 +1,4 @@
-package com.sora.zero.tgfc.widget;
+package com.sora.zero.tgfc.widget.Emoticon;
 
 import android.content.Context;
 import android.util.SparseArray;

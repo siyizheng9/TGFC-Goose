@@ -1,4 +1,4 @@
-package com.sora.zero.tgfc.view.common;
+package com.sora.zero.tgfc.widget.Emoticon;
 
 import android.app.Activity;
 import android.databinding.DataBindingUtil;

@@ -1,4 +1,4 @@
-package com.sora.zero.tgfc.widget;
+package com.sora.zero.tgfc.widget.Emoticon;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;

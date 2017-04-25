@@ -30,7 +30,7 @@ import com.sora.zero.tgfc.R;
 import com.sora.zero.tgfc.databinding.FragmentPostBinding;
 import com.sora.zero.tgfc.utils.ImeUtils;
 import com.sora.zero.tgfc.view.MainActivity;
-import com.sora.zero.tgfc.view.common.EmoticonPagerAdapter;
+import com.sora.zero.tgfc.widget.Emoticon.EmoticonPagerAdapter;
 import com.sora.zero.tgfc.widget.EventBus;
 
 import io.reactivex.disposables.Disposable;

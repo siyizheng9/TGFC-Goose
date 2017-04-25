@@ -1,4 +1,4 @@
-package com.sora.zero.tgfc.view.common;
+package com.sora.zero.tgfc.widget.Emoticon;
 
 import android.app.Activity;
 import android.content.res.Resources;
@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sora.zero.tgfc.R;
-import com.sora.zero.tgfc.widget.EmoticonFactory;
-import com.sora.zero.tgfc.widget.GridAutofitLayoutManager;
 
 import java.util.List;
 
