@@ -22,7 +22,6 @@ import com.sora.zero.tgfc.utils.L;
 import com.sora.zero.tgfc.utils.RxJavaUtil;
 import com.sora.zero.tgfc.view.base.BasePostFragment;
 
-import java.util.Arrays;
 import java.util.List;
 
 import io.reactivex.annotations.NonNull;
@@ -119,7 +118,6 @@ public class NewThreadFragment extends BasePostFragment {
     }
 
     private void setSpinner(@NonNull List<ThreadType> types) {
-        L.d("setSpinner types: " + Arrays.toString(types.toArray()));
         if (types.isEmpty()){
             typeSpinner.setVisibility(View.GONE);
             return;

@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.sora.zero.tgfc.data.api.model.Emoticon;
 import com.sora.zero.tgfc.data.event.EmoticonClickEvent;
+import com.sora.zero.tgfc.utils.L;
 import com.sora.zero.tgfc.widget.EventBus;
 
 /**
@@ -18,6 +19,7 @@ public class EmoticonViewModel {
     public View.OnClickListener clickEmotion(EventBus eventBus) {
         return v -> {
             // notify ReplyFragment that emoticon had been clicked
+            L.d("EmoticonViewModel" + emoticon.get().getEntity());
             eventBus.post(new EmoticonClickEvent(emoticon.get().getEntity()));
         };
     }

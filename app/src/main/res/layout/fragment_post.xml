@@ -49,12 +49,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:elevation="1dp"
+                android:background="@color/light_emoticon_keyboard_tab_layout_background"
                 tools:ignore="UnusedAttribute"/>
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/emoticon_keyboard_pager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:background="@color/light_emoticon_keyboard_background"/>
 
         </LinearLayout>
     </LinearLayout>

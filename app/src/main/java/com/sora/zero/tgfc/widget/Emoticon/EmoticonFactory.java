@@ -58,14 +58,13 @@ public class EmoticonFactory {
         add(builder, "default/r5.gif", ":r5: ");
         add(builder, "default/r6.gif", ":r6: ");
         add(builder, "default/r7.gif", ":r7: ");
-        add(builder, "default/r8.gif", ":r8: ");
         add(builder, "default/r9.gif", ":r9: ");
         add(builder, "default/r10.gif", ":r10: ");
         return builder.build();
     }
 
     private void add(ImmutableList.Builder<Emoticon> builder, String emoticonFileName, String emoticonEntity){
-        builder.add(new Emoticon(emoticonFileName, emoticonEntity));
+        builder.add(new Emoticon(ASSET_PATH_EMOTICON + emoticonFileName, emoticonEntity));
     }
 
 }
