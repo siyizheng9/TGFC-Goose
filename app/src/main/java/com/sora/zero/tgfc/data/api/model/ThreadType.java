@@ -1,5 +1,7 @@
 package com.sora.zero.tgfc.data.api.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 
 import com.google.common.base.Objects;
@@ -9,7 +11,7 @@ import com.google.common.base.Objects;
  * Created by zsy on 4/23/17.
  */
 
-public final class ThreadType {
+public final class ThreadType implements Parcelable{
     private String typeId;
     private String typeName;
 
@@ -17,6 +19,36 @@ public final class ThreadType {
         this.typeId = typeId;
         this.typeName = typeName;
     }
+
+    public ThreadType(Parcel in) {
+        String[] data = new String[2];
+
+        in.readStringArray(data);
+        this.typeId = data[0];
+        this.typeName = data[1];
+    }
+
+    @Override
+    public int describeContents() {
+        return 1;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeStringArray(new String[] {
+                this.typeId,
+                this.typeName});
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator<ThreadType>() {
+        public ThreadType createFromParcel(Parcel in) {
+            return new ThreadType(in);
+        }
+
+        public ThreadType[] newArray(int size) {
+            return new ThreadType[size];
+        }
+    };
 
     public String getTypeId() {
         return typeId;

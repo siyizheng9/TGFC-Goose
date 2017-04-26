@@ -27,8 +27,10 @@ import android.widget.EditText;
 
 import com.sora.zero.tgfc.App;
 import com.sora.zero.tgfc.R;
+import com.sora.zero.tgfc.data.event.EmoticonClickEvent;
 import com.sora.zero.tgfc.databinding.FragmentPostBinding;
 import com.sora.zero.tgfc.utils.ImeUtils;
+import com.sora.zero.tgfc.utils.RxJavaUtil;
 import com.sora.zero.tgfc.view.MainActivity;
 import com.sora.zero.tgfc.widget.Emoticon.EmoticonPagerAdapter;
 import com.sora.zero.tgfc.widget.EventBus;
@@ -45,6 +47,7 @@ public abstract class BasePostFragment extends BaseFragment {
      * keyboard is showing when configuration changes.
      */
     private static final String STATE_IS_EMOTICON_KEYBOARD_SHOWING = "is_emoticon_keyboard_showing";;
+    protected static final String ARG_CACHE_MODEL = "args_cache_model";
     private final Interpolator mInterpolator = new FastOutSlowInInterpolator();
     protected FragmentPostBinding mFragmentPostBinding;
     protected EditText mReplyView;
@@ -91,6 +94,10 @@ public abstract class BasePostFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        if(savedInstanceState != null)
+            restoreFromCache(savedInstanceState);
+
         mEventBus = App.getAppComponent().getEventBus();
 
         mReplyView.addTextChangedListener(new TextWatcher() {
@@ -130,6 +137,32 @@ public abstract class BasePostFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
 
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        mEmoticonClickDisposable = mEventBus.get()
+                .ofType(EmoticonClickEvent.class)
+                .subscribe(event -> {
+                    mReplyView.getText().replace(mReplyView.getSelectionStart(),
+                            mReplyView.getSelectionEnd(), event.getEmoticonEntity());
+                });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        RxJavaUtil.disposeIfNotNull(mEmoticonClickDisposable);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        cacheContent(outState);
+
+        outState.putBoolean(STATE_IS_EMOTICON_KEYBOARD_SHOWING, mIsEmoticonKeyboardShowing);
     }
 
     @Override
@@ -284,6 +317,10 @@ public abstract class BasePostFragment extends BaseFragment {
         public void onAnimationCancel(View view) {
         }
     }
+
+    protected abstract void restoreFromCache(Bundle savedInstance);
+
+    protected abstract void cacheContent(Bundle outState);
 
 
 

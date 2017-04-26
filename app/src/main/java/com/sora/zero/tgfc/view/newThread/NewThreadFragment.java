@@ -45,6 +45,7 @@ public class NewThreadFragment extends BasePostFragment {
     private Spinner typeSpinner;
 
     private NewThreadCacheModel mCacheModel;
+    private List<ThreadType> mThreadTypes;
 
     public static NewThreadFragment newInstance(int forumId) {
         NewThreadFragment fragment = new NewThreadFragment();
@@ -90,6 +91,12 @@ public class NewThreadFragment extends BasePostFragment {
         getActivity().setTitle(fragmentTitle);
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+    }
+
 
     @Override
     public void onDestroy() {
@@ -98,6 +105,28 @@ public class NewThreadFragment extends BasePostFragment {
             mDisposable.dispose();
 
         super.onDestroy();
+    }
+
+    @Override
+    protected void restoreFromCache(Bundle savedInstanceState) {
+        mCacheModel =  savedInstanceState.getParcelable(ARG_CACHE_MODEL);
+        mThreadTypes = mCacheModel.getThreadTypes();
+        setSpinner(mThreadTypes);
+        if(mCacheModel != null){
+            titleEditText.setText(mCacheModel.getTitle());
+            mReplyView.setText(mCacheModel.getMessage());
+        }
+
+    }
+
+    @Override
+    protected void cacheContent(Bundle outState){
+        outState.putParcelable(ARG_CACHE_MODEL, new NewThreadCacheModel(
+                typeSpinner.getSelectedItemPosition(),
+                titleEditText.getText().toString(),
+                getContent(),
+                mThreadTypes));
+
     }
 
     private void init() {
@@ -124,6 +153,7 @@ public class NewThreadFragment extends BasePostFragment {
         } else {
             typeSpinner.setVisibility(View.VISIBLE);
         }
+        mThreadTypes = types;
         ThreadTypeSpinnerAdapter adapter = new ThreadTypeSpinnerAdapter(this.getContext(), types);
         typeSpinner.setAdapter(adapter);
         if (mCacheModel != null && types.size() > mCacheModel.getSelectPosition()) {
